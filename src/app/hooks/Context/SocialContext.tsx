@@ -1,5 +1,5 @@
 'use client'
-import React, { createContext, useContext, Dispatch, SetStateAction, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 type User = {
     id: number;
@@ -26,64 +26,72 @@ type GlobalContextProps = {
     children: React.ReactNode;
 };
 
-interface ContextProps {
+type ContextProps = {
     userId: number;
-    open: boolean;
-    setOpen: Dispatch<SetStateAction<boolean>>;
-    setUserId: Dispatch<SetStateAction<number>>;
-    user: User[];
-    setUser: Dispatch<SetStateAction<User[]>>;
-    post: Post[];
-    setPost: Dispatch<SetStateAction<Post[]>>;
-    comment: Comment[];
-    setComment: Dispatch<SetStateAction<Comment[]>>;
-    content: string;
-    setContent: Dispatch<SetStateAction<string>>;
-}
-
-const GlobalContext = createContext<ContextProps>({
-    userId: 0,
-    setUserId: (): void => { },
-    user: [],
-    setUser: (): void => { },
-    post: [],
-    setPost: (): void => { },
-    comment: [],
-    setComment: (): void => { },
-    open: false,
-    setOpen: (): void => { },
-    content: "",
-    setContent: (): void => { },
-});
-
-export const GlobalContextProvider: React.FC<GlobalContextProps> = ({ children }) => {
-    const [userId, setUserId] = useState(0);
-    const [user, setUser] = useState<[] | User[]>([]);
-    const [post, setPost] = useState<[] | Post[]>([]);
-    const [comment, setComment] = useState<[] | Comment[]>([]);
-    const [content, setContent] = useState("");
-    const [open, setOpen] = useState(false);
-
-    return (
-        <GlobalContext.Provider
-            value={{
-                userId,
-                setUserId,
-                user,
-                setUser,
-                post,
-                setPost,
-                comment,
-                setComment,
-                open,
-                setOpen,
-                content,
-                setContent,
-            }}
-        >
-            {children}
-        </GlobalContext.Provider >
-    )
+    setUserId: (id: number) => void;
+    isOpen: boolean;
+    setOpen: (isOpen: boolean) => void;
+    isFocused: boolean;
+    setIsFocused: (isFocused: boolean) => void;
+    users: User[];
+    setUsers: (users: User[]) => void;
+    posts: Post[];
+    setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
+    comments: Comment[]; // Correção aqui
+    setComments: React.Dispatch<React.SetStateAction<Comment[]>>; // Correção aqui
+    contents: string[];
+    setContents: (contents: string[]) => void;
+    newPostContent: string;
+    setNewPostContent: (content: string) => void;
+    newCommentContent: string;
+    setNewCommentContent: (content: string) => void;
 };
 
-export const UserGlobalContext = () => useContext(GlobalContext); 
+const GlobalContext = createContext<ContextProps | undefined>(undefined);
+
+export const GlobalContextProvider: React.FC<GlobalContextProps> = ({ children }) => {
+    const [isOpen, setOpen] = useState(false);
+    const [isFocused, setIsFocused] = useState(false);
+    const [userId, setUserId] = useState(0);
+    const [users, setUsers] = useState<User[]>([]);
+    const [posts, setPosts] = useState<Post[]>([]);
+    const [comments, setComments] = useState<Comment[]>([]);
+    const [contents, setContents] = useState<string[]>([]);
+    const [newPostContent, setNewPostContent] = useState('');
+    const [newCommentContent, setNewCommentContent] = useState('');
+
+    const contextValue: ContextProps = {
+        userId,
+        setUserId,
+        isOpen,
+        setOpen,
+        isFocused,
+        setIsFocused,
+        users,
+        setUsers,
+        posts,
+        setPosts,
+        comments,
+        setComments,
+        contents,
+        setContents,
+        newPostContent,
+        setNewPostContent,
+        newCommentContent,
+        setNewCommentContent,
+    };
+
+    return (
+        <GlobalContext.Provider value={contextValue}>
+            {children}
+        </GlobalContext.Provider>
+    );
+};
+
+export const useGlobalContext = (): ContextProps => {
+    const context = useContext(GlobalContext);
+    if (!context) {
+        throw new Error('useGlobalContext must be used within a GlobalContextProvider');
+    }
+    return context;
+};
