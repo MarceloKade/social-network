@@ -9,7 +9,7 @@ export default function Button({ title, onClick, className }: ButtonProps) {
     return (
         <button
             onClick={onClick}
-            className={`rounded-md font-button text-base text-buttonColorFont ${className}`} >
+            className={`rounded-xl font-button text-base text-buttonColorFont ${className}`} >
             {title}
         </button>
     );
