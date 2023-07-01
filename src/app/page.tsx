@@ -1,11 +1,18 @@
+'use client'
+import Post from "@/components/Post";
+import User from "@/components/User";
+
 export default function Home() {
+
   return (
-    <div className="flex flex-col justify-center items-center bg-slate-600 w-screen h-screen text-slate-50">
-      <h1 className="font-title text-xl">Social Network</h1>
-      <p className="font-nameUser text-lg">Nome de usuários</p>
-      <p className="font-postTitle text-2xl">Títulos de post</p>
-      <p className="font-content text-sm">Conteúdo de post e comentários</p>
-      <button className="font-button text-base">Botões</button>
+    <div className="bg-slate-200 min-h-screen text-slate-50 flex flex-col">
+      <h1 className="font-title font-bold text-xl ml-4 mt-4 mb-2 text-socialFont">CardoNet</h1>
+      <div>
+        <User />
+        <div className="h-auto pt-10 flex justify-center">
+          <Post />
+        </div>
+      </div>
     </div>
   );
 }
