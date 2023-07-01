@@ -1,34 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Social Network
 
-## Getting Started
+## Menu
 
-First, run the development server:
+- [Social Network](#social-network)
+  - [Apresentação](#apresentação)
+  - [Objetivo](#objetivo)
+  - [Funcionalidades](#funcionalidades)
+  - [Tecnologias](#tecnologias)
+  - [Contato](#contato)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### Apresentação
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Bem vindo ao Social Network. Este é um aplicativo front-end para rede social, com opção de criar um novo usuário, selecionar, criar postagens com um modal, curtir e comentar as postagens.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Objetivo
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+O objetivo principal desse projeto é entender melhor como funciona o useContext
 
-## Learn More
+### Funcionalidades
 
-To learn more about Next.js, take a look at the following resources:
+- Criar um novo usuário
+- Selecionar um usuário.
+- Fazer uma postagem.
+- Comentar a postagem criada.
+- Curtir a postagem.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Tecnologias
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+As seguintes tecnologias foram utilizadas neste projeto:
 
-## Deploy on Vercel
+- Next.js.
+- React.
+- TypeScript.
+- Tailwind CSS.
+- React Modal.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Contato
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<br>
+
+<div>
+  <a href="https://www.linkedin.com/in/marcelokade/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
+  <a href = "mailto:marcelo.kade@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+</div>
