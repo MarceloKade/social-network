@@ -1,6 +1,7 @@
 import './globals.css'
-import { Roboto_Flex as Roboto, Open_Sans as Open, Playfair_Display as Playfair, Noto_Sans as Noto, Nunito } from 'next/font/google'
+import { Roboto_Flex as Roboto, Open_Sans as Open, Noto_Sans as Noto, Nunito } from 'next/font/google'
 import { ReactNode } from 'react'
+import { GlobalContextProvider } from './hooks/Context/useGlobalContext'
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -12,12 +13,6 @@ const open = Open({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-open'
-})
-
-const playfair = Playfair({
-  subsets: ['latin'],
-  weight: '700',
-  variable: '--font-playfair'
 })
 
 const noto = Noto({
@@ -45,7 +40,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={`${roboto.variable} ${open.variable} ${playfair.variable} ${noto.variable} ${nunito.variable} font-sans`}>{children}</body>
+      <body className={`${roboto.variable} ${open.variable} ${noto.variable} ${nunito.variable} font-sans`}>
+        <GlobalContextProvider>
+          {children}
+        </GlobalContextProvider>
+      </body>
     </html>
   )
 }
