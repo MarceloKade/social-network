@@ -8,7 +8,7 @@ type Like = {
     commentId: number;
 };
 
-type User = {
+export type User = {
     id: number;
     userName: string;
     likes: Like[];
@@ -17,6 +17,7 @@ type User = {
 };
 
 type Post = {
+    user: User;
     id: number;
     userId: number;
     content: string;
@@ -27,7 +28,6 @@ type Post = {
 type Comment = {
     id: number;
     userId: number;
-    likes: Like[];
     content: string;
 };
 
