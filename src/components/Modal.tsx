@@ -1,7 +1,7 @@
 'use client'
 import { useRef, useEffect } from "react";
 import Button from "./Button";
-import { useGlobalContext } from "@/app/hooks/Context/SocialContext";
+import { useGlobalContext } from "@/app/hooks/Context/useGlobalContext";
 
 interface ModalProps {
     isOpen: boolean;
@@ -47,9 +47,8 @@ export default function Modal({
                 <div className="p-2 rounded-lg">
                     <textarea
                         ref={textareaRef}
-                        placeholder="No que você está pensando?"
-                        className={`outline-none resize-none  w-80 h-72 ${isFocused ? "" : "text-gray-500"
-                            }`}
+                        placeholder="What are you thinking?"
+                        className="outline-none resize-none  w-80 h-72 text-gray-500"
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setIsFocused(false)}
                         value={content}
